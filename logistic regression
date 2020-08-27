@@ -28,6 +28,26 @@ def Logistic_regression(X,y,n,alpha,gamma):
     return Cost
     
     
+    logistic regression using for loops
+    
+    def logisticRegg(X,y,n,alpha):
+    W = np.zeros(X.shape[1]).reshape(-1,1)
+    b = 0
+    y=y.reshape(-1,1)
+    for i in range(0,n):
+        hypo = 1/(1+np.exp(-1*(np.dot(X,W)+b)))
+        dz =hypo - y
+        dw = 0
+        Acumulator = []
+        for i,j in enumerate(W):
+            Acumulator.append(np.sum(X[:,i].reshape(-1,1)*dz))
+        dw = (1.0/m)*(np.array(Acumulator).reshape(-1,1))
+        db = (1.0/m)*np.sum(dz)
+        W = W-alpha*dw
+        b = b-alpha*db
+    
+    return W,b
+    
 many questions i have here after many iterations it come to be true but it always chooses the hardest path
     
     
